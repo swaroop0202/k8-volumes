@@ -8,12 +8,3 @@ metadata:
 spec:
   storageClassName: ""
   ...
-# apiVersion: v1
-# kind: PersistentVolumeClaim
-# metadata:
-#   name: ebs-static
-#   namespace: foo
-# spec:
-#   storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
-#   volumeName: 
-#   ...
