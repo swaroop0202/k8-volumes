@@ -1,23 +1,9 @@
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: ebs-static
-spec:
-  accessModes:
-  - ReadWriteOnce
-  capacity:
-    storage: 10Gi
-  csi:
-    driver: ebs.csi.aws.com
-    volumeHandle: vol-0c0c8edd36e287f5d
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ebs-static
+  name: ebs-dynamic
 spec:
-  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
-  volumeName: ebs-static
+  storageClassName: "ebs-dynamic" # Empty string must be explicitly set otherwise default StorageClass will be set
   accessModes:
   - ReadWriteOnce
   resources:
@@ -37,13 +23,15 @@ spec:
     image: nginx
     ports:
     - containerPort: 80
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1c
     volumeMounts:
       - mountPath: "/usr/share/nginx/html"
         name: myvolume
   volumes:
     - name: myvolume
       persistentVolumeClaim:
-        claimName: ebs-static
+        claimName: ebs-dynamic
 ---
 apiVersion: v1
 kind: Service
@@ -57,4 +45,4 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 80    
+      targetPort: 80        
