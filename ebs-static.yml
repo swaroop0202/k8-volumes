@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: ebs-static
-  labels:
-    project: expense
-    environment: dev
+  name: foo-pv
 spec:
   storageClassName: ""
+  claimRef:
+    name: foo-pvc
+    namespace: foo
   ...
