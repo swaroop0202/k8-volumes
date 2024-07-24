@@ -20,4 +20,6 @@ spec:
   volumeName: ebs-static
   accessModes:
   - ReadWriteOnce
-  storage: 5Gi
+  resources:
+    requests:
+      storage: 5Gi
