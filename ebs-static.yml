@@ -9,4 +9,4 @@ spec:
     storage: 10Gi
   csi:
     driver: ebs.csi.aws.com
-       volumeHandle: vol-0c0c8edd36e287f5d
+    volumeHandle: vol-0c0c8edd36e287f5d
