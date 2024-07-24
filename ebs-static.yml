@@ -10,3 +10,11 @@ spec:
   csi:
     driver: ebs.csi.aws.com
     volumeHandle: vol-0c0c8edd36e287f5d
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-static
+spec:
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  volumeName: ebs-static
