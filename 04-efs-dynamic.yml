@@ -32,7 +32,6 @@ kind: Service
 metadata:
   name: efs-lb
 spec:
-  type: LoadBalancer
   selector:
     name: expense
     environment: dev
