@@ -21,6 +21,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  volumeName: efs-static
   resources:
     requests:
       storage: 2Gi
